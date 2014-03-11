@@ -3,6 +3,7 @@ var aws = require('aws-sdk-promise');
 var request = require('superagent-promise');
 var app = express();
 var Promise = require('promise');
+var debug = require('debug')('docker-registry');
 
 console.log(process.env);
 var bucket = process.env.S3_BUCKET;
@@ -113,11 +114,13 @@ function tagHandler(req, res) {
 }
 
 function imageHandler(req, res) {
-  var url = getObjectUrl(
+  return getObject(
     'repositories/' + req.params.repository + '/_index_images'
-  );
-  res.set('Location', url);
-  res.send(301);
+  ).
+  then(res.send.bind(res, 200)).
+  catch(function(err) {
+    console.error(err.stack);
+  });
 }
 
 var ACTIONS = ['tags', 'images'];
@@ -152,8 +155,11 @@ app.get('/v1/repositories/*', function(req, res) {
 
   var action = pathPart;
   var repoPath = repositoryParts.join('/');
+  var host = process.env.HOST || req.headers.host;
+
   res.set('Content-Type', 'application/json');
-  res.set('X-Docker-Endpoints', req.headers.host);
+  res.set('X-Docker-Endpoints', host);
+  debug('using endpoint:', host);
   req.params.repository = repoPath;
 
   switch (action) {
