@@ -1,0 +1,28 @@
+{
+  "name": "docker-registry-caching",
+  "version": "0.0.0",
+  "description": "docker-registry-caching",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lightsofapollo/docker-registry-caching.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lightsofapollo/docker-registry-caching/issues"
+  },
+  "homepage": "https://github.com/lightsofapollo/docker-registry-caching",
+  "dependencies": {
+    "aws-sdk": "~2.0.0-rc9",
+    "aws-sdk-promise": "0.0.0",
+    "restify": "~2.6.3",
+    "express": "~3.5.0",
+    "promise": "~4.0.0",
+    "superagent": "~0.17.0",
+    "superagent-promise": "~0.1.0"
+  }
+}
