@@ -4,6 +4,7 @@ var request = require('superagent-promise');
 var app = express();
 var Promise = require('promise');
 
+console.log(process.env);
 var bucket = process.env.S3_BUCKET;
 var s3Path = 'images/';
 
@@ -112,10 +113,11 @@ function tagHandler(req, res) {
 }
 
 function imageHandler(req, res) {
-  return getObject(
-          'repositories/' + req.params.repository + '/_index_images'
-         ).
-         then(res.send.bind(res, 200));
+  var url = getObjectUrl(
+    'repositories/' + req.params.repository + '/_index_images'
+  );
+  res.set('Location', url);
+  res.send(301);
 }
 
 var ACTIONS = ['tags', 'images'];

@@ -4,7 +4,8 @@
   "description": "docker-registry-caching",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,6 @@
   "dependencies": {
     "aws-sdk": "~2.0.0-rc9",
     "aws-sdk-promise": "0.0.0",
-    "restify": "~2.6.3",
     "express": "~3.5.0",
     "promise": "~4.0.0",
     "superagent": "~0.17.0",
