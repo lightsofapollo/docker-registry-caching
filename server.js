@@ -153,7 +153,7 @@ app.get('/v1/repositories/*', function(req, res) {
   var action = pathPart;
   var repoPath = repositoryParts.join('/');
   res.set('Content-Type', 'application/json');
-  res.set('X-Docker-Endpoints', '192.168.1.145:8080');
+  res.set('X-Docker-Endpoints', req.headers.host);
   req.params.repository = repoPath;
 
   switch (action) {
