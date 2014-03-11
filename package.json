@@ -23,6 +23,7 @@
     "express": "~3.5.0",
     "promise": "~4.0.0",
     "superagent": "~0.17.0",
-    "superagent-promise": "~0.1.0"
+    "superagent-promise": "~0.1.0",
+    "debug": "~0.7.4"
   }
 }
